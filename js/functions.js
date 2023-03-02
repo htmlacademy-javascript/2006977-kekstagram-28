@@ -1,48 +1,57 @@
-const getLineLength = function (phrase, i) {
-  if (phrase.length <= i) {
+const getLineLength = function (phrase, maxLength) {
+  if (phrase.length <= maxLength) {
     return true;
-  } else {
+  }
+  return false;
+};
+getLineLength('проверяемая строка', 10);
+
+
+const checkForPalindrome = function (phrase) {
+  const phraseToLowerCase = phrase.toLowerCase().trim();
+  for (let i = 0; i < phraseToLowerCase.length; i++) {
+    if (phraseToLowerCase[i] === phraseToLowerCase[phraseToLowerCase.length - 1 - i]) {
+      return true;
+    }
     return false;
   }
 };
+checkForPalindrome('ДовОд');
 
-const checkPalindrom = function (phrase) {
-  const string = phrase.toLowerCase();
-  for (let i = 0; i < string.length; i++) {
-    if (string[i] === string[string.length - 1 - i]) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-};
 
 const getNumbers = function (phrase) {
-  const numbers = '0123456789';
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   let result = '';
+  if (typeof phrase === 'number') {
+    return phrase;
+  }
   for (let i = 0; i < phrase.length; i++) {
     if (numbers.includes(phrase[i])) {
       result = result + phrase[i];
     }
   }
-  return parseFloat(result);
+  return parseInt(result, 10);
 };
+getNumbers('1 кефир, 0.5 батона');
 
-const stickStrings = function (initial, min, add) {
+
+const getStringSpecificLengthWithAddCharacter = function (initial, min, add) {
   let result = add + initial;
-  if (result.length === min) {
-    return result;
-  }
-  if (result.length < min) {
-    while (result.length < min) {
-      result = add.substring(0, min - result.length) + result;
-    }
-    if (result.length === min) {
+  switch (true){
+    case result.length === min :
       return result;
-    }
-  }
-  if (result.length > min) {
-    result = add.substring(0, min - initial.length) + initial;
-    return result;
+
+    case result.length < min :
+      while (result.length < min) {
+        result = add.substring(0, min - result.length) + result;
+      }
+      return result;
+
+    case result.length > min :
+      result = add.substring(0, min - initial.length) + initial;
+      return result;
+    default:
+      return result;
   }
 };
+getStringSpecificLengthWithAddCharacter('1', 4, '0');
