@@ -22,13 +22,18 @@ checkForPalindrome('ДовОд');
 const getNumbers = function (phrase) {
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   let result = '';
-  if (typeof phrase === 'number') {
-    return phrase;
-  }
-  for (let i = 0; i < phrase.length; i++) {
-    if (numbers.includes(phrase[i])) {
-      result = result + phrase[i];
-    }
+  switch (true) {
+    case typeof phrase === 'number' && Number.isInteger(phrase):
+      return Math.abs(phrase);
+    case typeof phrase === 'number' && !Number.isInteger(phrase):
+      result = phrase.toString().replace(/\./g , '');
+      return Math.abs(result);
+    default:
+      for (let i = 0; i < phrase.length; i++) {
+        if (numbers.includes(phrase[i])) {
+          result = result + phrase[i];
+        }
+      }
   }
   return parseInt(result, 10);
 };
