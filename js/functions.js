@@ -10,10 +10,7 @@ getLineLength('проверяемая строка', 10);
 const checkForPalindrome = function (phrase) {
   const phraseToLowerCase = phrase.toLowerCase().trim();
   for (let i = 0; i < phraseToLowerCase.length; i++) {
-    if (phraseToLowerCase[i] === phraseToLowerCase[phraseToLowerCase.length - 1 - i]) {
-      return true;
-    }
-    return false;
+    return phraseToLowerCase[i] === phraseToLowerCase[phraseToLowerCase.length - 1 - i];
   }
 };
 checkForPalindrome('ДовОд');
@@ -43,8 +40,8 @@ getNumbers('1 кефир, 0.5 батона');
 const getStringSpecificLengthWithAddCharacter = function (initial, min, add) {
   let result = add + initial;
   switch (true){
-    case result.length === min :
-      return result;
+    case initial.length >= min :
+      return initial;
 
     case result.length < min :
       while (result.length < min) {
