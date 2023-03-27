@@ -1,10 +1,10 @@
-function generateUniqueNumber () {
+const generateUniqueNumber = () => {
   let lastGeneratedId = 0;
   return () => {
     lastGeneratedId += 1;
     return lastGeneratedId;
   };
-}
+};
 
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
