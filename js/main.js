@@ -1,4 +1,4 @@
 import {getContent} from './data.js';
-import {createThumbnails} from './thumbnails.js';
+import {CreateMiniatures} from './miniatures.js';
 
-createThumbnails(getContent());
+CreateMiniatures(getContent());
